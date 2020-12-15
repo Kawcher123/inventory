@@ -1,0 +1,103 @@
+{% extends 'index1.html' %}
+
+{% block content %}
+
+
+
+
+
+
+<h1 class="mt-4">Customer</h1>
+<ol class="breadcrumb mb-4">
+	<li class="breadcrumb-item active">Customer</li>
+</ol>
+<div class="row">
+	<div class="col-xl-3 col-md-6">
+		<div class="card bg-primary text-center text-white mb-4">
+			<div class="card-header">
+				<h5 class="card-title">Total Orders</h5>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">{{total_orders}}</h5>
+			</div>
+
+		</div>
+	</div>
+	<div class="col-xl-3 col-md-6">
+		<div class="card bg-warning text-center text-white mb-4">
+			<div class="card-header">
+				<h5 class="card-title">Total Orders</h5>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">{{total_orders}}</h5>
+			</div>
+
+		</div>
+	</div>
+	<div class="col-xl-3 col-md-6">
+		<div class="card bg-success text-center text-white mb-4">
+			<div class="card-header">
+				<h5 class="card-title">Delivered</h5>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">{{delivered}}</h5>
+			</div>
+
+		</div>
+	</div>
+	<div class="col-xl-3 col-md-6">
+		<div class="card bg-danger text-center text-white mb-4">
+			<div class="card-header">
+				<h5 class="card-title">Pending</h5>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">{{pending}}</h5>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<div class="row mx-1">
+	<h5>CUSTOMERS: </h5><br>
+	<a class="btn btn-primary  btn-sm mx-2" href="#">Create Customer</a>
+</div>
+<hr>
+<div class="card card-body">
+	<form class="d-none d-md-inline-block form-inline ">
+		<div class="input-group">
+
+			<input class="form-control" type="text" placeholder="Search for..." aria-label="Search"
+				aria-describedby="basic-addon2" />
+			<div class="input-group-append">
+				<button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+			</div>
+		</div>
+	</form>
+	
+	<table class="table table-sm">
+		
+		<tr>
+			<th></th>
+			<th>Customer</th>
+			<th>Phone</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+
+		{% for customer in customer_list %}
+		<tr>
+			<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">View</a></td>
+			<td>{{customer.name}}</td>
+			<td>{{customer.phone}}</td>
+			<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Update</a></td>
+			<td><a class="btn btn-sm btn-danger" href="{% url 'customer' customer.id %}">Delete</a></td>
+		</tr>
+		{% endfor %}
+
+	</table>
+</div>
+
+
+{% endblock %}

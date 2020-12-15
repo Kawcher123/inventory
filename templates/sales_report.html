@@ -1,0 +1,91 @@
+{% extends 'index1.html' %}
+
+{% block content %}
+
+
+			<br>
+
+			  
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-center text-white mb-4">
+									<div class="card-header">
+										<h5 class="card-title">DAILY SALES</h5>
+									</div>
+                                    <div class="card-body"><h5 class="card-title">{{total_orders}}</h5></div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-center text-white mb-4">
+                                    <div class="card-header">
+										<h5 class="card-title">WEEKLY SALES</h5>
+									</div>
+                                    <div class="card-body"><h5 class="card-title">{{total_orders}}</h5></div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-center text-white mb-4">
+                                    <div class="card-header">
+										<h5 class="card-title">MONTHLY SALES</h5>
+									</div>
+                                    <div class="card-body"><h5 class="card-title">{{delivered}}</h5></div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-center text-white mb-4">
+                                    <div class="card-header">
+										<h5 class="card-title">YEARLY SALES</h5>
+									</div>
+                                    <div class="card-body"><h5 class="card-title">{{pending}}</h5></div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+					
+            
+            <br>
+
+		                <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-center text-white mb-4">
+									<div class="card-header">
+										<h5 class="card-title">DAILY EARNING</h5>
+									</div>
+                                    <div class="card-body"><h5 class="card-title">{{total_orders}}</h5></div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-center text-white mb-4">
+                                    <div class="card-header">
+										<h5 class="card-title">WEEKLY EARNING</h5>
+									</div>
+                                    <div class="card-body"><h5 class="card-title">{{total_orders}}</h5></div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-center text-white mb-4">
+                                    <div class="card-header">
+										<h5 class="card-title">MONTHLY EARNING</h5>
+									</div>
+                                    <div class="card-body"><h5 class="card-title">{{delivered}}</h5></div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-center text-white mb-4">
+                                    <div class="card-header">
+										<h5 class="card-title">YEARLY EARNING</h5>
+									</div>
+                                    <div class="card-body"><h5 class="card-title">{{pending}}</h5></div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+				
+
+{% endblock content %}
