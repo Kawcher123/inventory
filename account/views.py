@@ -48,6 +48,7 @@ def customer(request,pk):
 
 
 def createOrder(request):
+	products=Product.objects.all()
 	form = OrderForm()
 	if request.method == 'POST':
 		#print('Printing POST:', request.POST)
@@ -56,7 +57,7 @@ def createOrder(request):
 			form.save()
 			return redirect('/')
 
-	context = {'form':form}
+	context = {'form':form,'products':products}
 	return render(request, 'order_form.html', context)
 
 
