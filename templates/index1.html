@@ -14,6 +14,11 @@
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+
+        <style>
+
+            
+        </style>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -32,6 +37,7 @@
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ml-auto ml-md-0">
+               <!--
                 <li class="nav-item dropdown no-arrow mx-1">
                   <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-bell fa-fw"></i>
@@ -44,6 +50,9 @@
                     <a class="dropdown-item" href="#">Something else here</a>
                   </div>
                 </li>
+                -->
+
+
                 <li class="nav-item dropdown no-arrow mx-1">
                   <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-envelope fa-fw"></i>
@@ -81,6 +90,7 @@
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
 
+                            <!--
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Customer
@@ -88,10 +98,41 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="">Static Navigation</a>
-                                    <a class="nav-link" href="{% url 'customer_list' %}">Customers</a>
+                                    <a class="nav-link" href="">New Customer</a>
+                                    <a class="nav-link" href="{% url 'customer_list' %}">Customer List</a>
+                                    <a class="nav-link" href="">Customer Reports</a>
                                 </nav>
                             </div>
+
+                            -->
+
+
+
+                            
+
+
+
+
+
+
+                                                        
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Customers
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    
+
+                                    <a class="nav-link" href="">Customer Reports</a>
+                                    <a class="nav-link" href="">New Customer</a>
+                                    <a class="nav-link" href="{% url 'customer_list' %}">Customer List</a>
+                                    
+                                   
+                                </nav>
+                            </div>
+
 
 
 
@@ -103,12 +144,20 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="{% url 'product' %}">Products</a>
+                                    <a class="nav-link" href="{% url 'product' %}">Product Reports</a>
+                                    <a class="nav-link" href="">New Product</a>
+                                    <a class="nav-link" href="{% url 'product' %}">Product List</a>
                                 </nav>
                             </div>
 
+                          
 
+
+
+
+
+
+                            <!--
                             
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
@@ -141,7 +190,7 @@
                                     </div>
                                 </nav>
                             </div>
-
+                        -->
                             
 
 
@@ -150,10 +199,63 @@
 
 
 
+                            <!--
                             <a class="nav-link" href="{% url 'sales_report' %}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Reports
                             </a>
+                            -->
+                    
+
+
+
+
+                            <ul class="nav flex-column flex-nowrap overflow-hidden">
+                              
+                                <li class="nav-item">
+                                    <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><i class="fa fa-table"></i> <span class="d-none d-sm-inline">Reports</span><div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
+                                    
+                                    <div class="collapse" id="submenu1" aria-expanded="false">
+                                        <ul class="flex-column pl-2 nav">
+                                            <li class="nav-item"><a class="nav-link py-0" href="{% url 'sales_report' %}"><span>All Reports</span></a></li>
+                                            <li class="nav-item">
+                                                <a class="nav-link collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>Customers</span><div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
+                                                <div class="collapse" id="submenu1sub1" aria-expanded="false">
+                                                    <ul class="flex-column nav pl-4">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link p-1" href="#">
+                                                                <i class="fa fa-fw fa-clock-o"></i> Daily </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link p-1" href="#">
+                                                                <i class="fa fa-fw fa-dashboard"></i> Weekly </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link p-1" href="#">
+                                                                <i class="fa fa-fw fa-bar-chart"></i> Charts </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link p-1" href="#">
+                                                                <i class="fa fa-fw fa-compass"></i> Areas </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item"><a class="nav-link text-truncate" href="#"><i class="fa fa-download"></i> <span class="d-none d-sm-inline">Export</span></a></li>
+                            </ul>
+
+
+
+
+
+
+
+
+
+
 
                             <a class="nav-link" href="charts.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
