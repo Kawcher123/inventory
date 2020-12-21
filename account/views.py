@@ -7,13 +7,15 @@ from .forms import OrderForm
 
 def home(request):
 	orders = Order.objects.all()
+	products = Product.objects.all()
 	customers = Customer.objects.all()
 	total_customers = customers.count()
 	total_orders = orders.count()
+	total_products = products.count()
 	delivered = orders.filter(status='Delivered').count()
 	pending = orders.filter(status='Pending').count()
 
-	context = {'orders':orders, 'customers':customers,
+	context = {'orders':orders, 'customers':customers,'total_products':total_products,
 	'total_orders':total_orders,'delivered':delivered,
 	'pending':pending }
 
@@ -28,12 +30,16 @@ def salesReport(request):
 def product(request):
 	products = Product.objects.all()
 	total_product=products.count()
+	instock=products.filter(status='In Stock').count()
 
-	return render(request, 'product.html', {'products':products,'total_product':total_product})
+	return render(request, 'product.html', {'products':products,'total_product':total_product,'instock':instock})
 
 def customerList(request):
 	customers = Customer.objects.all()
-	return render(request,'customer_list.html',{'customer_list':customers})
+	total_customers = customers.count()
+	active = customers.filter(status='Active').count()
+	inactive = customers.filter(status='Inactive').count()
+	return render(request,'customer_list.html',{'customer_list':customers,'total_customers':total_customers,'active':active,'inactive':inactive})
 
 
 def customer(request,pk):

@@ -4,37 +4,69 @@
 
 {%  include 'status.html' %}
 
-<br>
 
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+				<h4 class="box-title">Order List </h4>
+				<a class="btn btn-info  btn-sm" href="{% url 'create_order' %}">CREATE ORDER</a>
+            </div>
+            <div class="card-body--">
+                <div class="table-stats order-table ov-h">
+                    <table class="table ">
+                        <thead class="bg-secondary text-white">
+                            <tr>
+                                <th class="serial">#</th>
+								<th>Customer</th>
+								<th>Address</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Online/Offline</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if orders %}
+                            {% for order in orders %}
+                            <tr>
+                                <td class="serial">{{ forloop.counter }}</td>
+								<td>{{order.customer.name}}</td>
+								<td>sdfdsf</td>
+                                <td>{{ order.product.name }}</td>
+                                <td>{{order.product.price}}</td>
+                                <td>
+									<a class="btn btn-warning" href="">Online</a>
+								</td>
+                                <td>{{ order.date_created }}</td>
+                                <td>
+                                    {% if order.status == 'Pending' %}
+                                        <a class="btn btn-warning" href="">{{ order.status }}</a>
+                                    {% elif order.status == 'decline' %}
+                                        <a class="btn btn-danger" href="">{{ order.status }}</a>
+                                    {% elif order.status == 'Delivered' %}
+                                        <a class="btn btn-success" href="">{{ order.status }}</a>
+                                    {% elif order.status == 'approved' %}
+                                        <a class="btn btn-primary" href="">{{ order.status }}</a>
+                                    {% elif order.status == 'bulk' %}
+                                        <a class="btn btn-secondary" href="">{{ order.status }}</a>
+                                    {% else %}
+                                        <a class="btn btn-info" href="">{{ order.status }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                                <tr><td>No Order Data</td></tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div> <!-- /.table-stats -->
+            </div>
+        </div> <!-- /.card -->
+    </div>  <!-- /.col-lg-8 -->
 
-		<h5>LAST 10 ORDERS</h5>
-		<hr>
-		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_order' %}">Create Order</a>
-			<table class="table table-sm">
-				<tr>
-					<th>Product</th>
-					<th>Date Orderd</th>
-					<th>Status</th>
-					<th>Update</th>
-					<th>Remove</th>
-				</tr>
-
-
-				{% for order in orders %}
-					<tr>
-						<td>{{order.product}}</td>
-						<td>{{order.date_created}}</td>
-						<td>{{order.status}}</td>
-						<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
-
-						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
-
-					</tr>
-				{% endfor %}
-		
-
-			</table>
-		</div>
-
-{% endblock %}
+    
+</div>
+{% endblock content %}

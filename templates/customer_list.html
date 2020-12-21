@@ -10,55 +10,44 @@
 	<h1>CUSTOMERS</h1>
 <a class="btn btn-info  btn-sm mx-2" href="#">ADD CUSTOMER</a>
 
-</br>
-<br>
 <br>
 <br>
 <div class="row">
-	<div class="col-xl-3 col-md-6">
+	<div class="col-xl-4 col-md-6">
 		<div class="card bg-primary text-center text-white mb-4">
+			<div class="card-header">
+				<h5 class="card-title">Total Customer</h5>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">{{total_customers}}</h5>
+			</div>
+
+		</div>
+	</div>
+	<div class="col-xl-4 col-md-6">
+		<div class="card bg-success text-center text-white mb-4">
 			<div class="card-header">
 				<h5 class="card-title">Active Customers</h5>
 			</div>
 			<div class="card-body">
-				<h5 class="card-title">{{total_orders}}</h5>
+				<h5 class="card-title">{{active}}</h5>
 			</div>
 
 		</div>
 	</div>
-	<div class="col-xl-3 col-md-6">
+	<div class="col-xl-4 col-md-6">
 		<div class="card bg-warning text-center text-white mb-4">
 			<div class="card-header">
-				<h5 class="card-title">Deactive Customers</h5>
+				<h5 class="card-title">Inactive Customers</h5>
 			</div>
 			<div class="card-body">
-				<h5 class="card-title">{{total_orders}}</h5>
+				<h5 class="card-title">{{inactive}}</h5>
 			</div>
 
 		</div>
 	</div>
-	<div class="col-xl-3 col-md-6">
-		<div class="card bg-success text-center text-white mb-4">
-			<div class="card-header">
-				<h5 class="card-title">Delivered</h5>
-			</div>
-			<div class="card-body">
-				<h5 class="card-title">{{delivered}}</h5>
-			</div>
 
-		</div>
-	</div>
-	<div class="col-xl-3 col-md-6">
-		<div class="card bg-danger text-center text-white mb-4">
-			<div class="card-header">
-				<h5 class="card-title">Pending</h5>
-			</div>
-			<div class="card-body">
-				<h5 class="card-title">{{pending}}</h5>
-			</div>
 
-		</div>
-	</div>
 </div>
 
 
@@ -78,33 +67,72 @@
 </div>
 <br>
 
-<div class="card card-body">
-	
-	
-	<table class="table table-sm">
-		
-		<tr>
-			<th></th>
-			<th>Customer</th>
-			<th>Status</th>
-			<th>Phone</th>
-			<th>Update</th>
-			<th>Delete</th>
-		</tr>
 
-		{% for customer in customer_list %}
-		<tr>
-			<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">View</a></td>
-			<td>{{customer.name}}</td>
-			<td><a class="btn btn-sm btn-success">Active</a></td>
-			<td>{{customer.phone}}</td>
-			<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Update</a></td>
-			<td><a class="btn btn-sm btn-danger" href="{% url 'customer' customer.id %}">Delete</a></td>
-		</tr>
-		{% endfor %}
 
-	</table>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+           
+            <div class="card-body--">
+                <div class="table-stats order-table ov-h">
+                    <table class="table ">
+                        <thead class="bg-secondary text-white">
+                            <tr>
+							    <th></th>
+                                <th class="serial">#</th>
+								
+								<th>Customer</th>
+								<th>Address</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Date Created</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if customer_list %}
+                            {% for customer in customer_list %}
+                            <tr>
+							   <td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">View</a></td>
+			
+                                <td class="serial">{{ forloop.counter }}</td>
+								<td>{{customer.name}}</td>
+								<td>{{customer.address}}</td>
+                                <td>{{customer.phone}}</td>
+                                <td>{{customer.email}}</td>
+                                
+                                
+                                
+                                <td>
+								{% if customer.status == 'Active' %}
+									<a class="btn btn-success" href="">{{customer.status}}</a>
+
+								{% else %}
+								<a class="btn btn-warning" href="">{{customer.status}}</a>
+								{% endif %}
+								</td>
+                                <td>{{ customer.date_created }}</td>
+                               	<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Update</a></td>
+								<td><a class="btn btn-sm btn-danger" href="{% url 'customer' customer.id %}">Delete</a></td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                                <tr><td>No Data</td></tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div> <!-- /.table-stats -->
+            </div>
+        </div> <!-- /.card -->
+    </div>  <!-- /.col-lg-8 -->
+
+    
 </div>
+
 
 
 {% endblock %}
