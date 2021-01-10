@@ -36,20 +36,31 @@
 					
 						
 						<div class="cart-row">
-							<table class="table table-sm">
-								<tr class="bg-primary">
-									<th>Product</th>
-									
-									<th>Quantity</th>
-									<th>Total</th>
-									<th>Remove</th>
-								</tr>
-				
-				
-								{% for order in products %}
+							
+
+
+
+
+
+
+							<table class="table table-hover">
+								<thead>
 									<tr>
-										<td>{{order.name}}</td>
+										<th scope="col">ID</th>
+										<th scope="col">Name</th>
+										<th scope="col">Quantity</th>
+										<th scope="col">Price</th>
 										
+										<th scope="col">Action</th>
+			
+									</tr>
+								</thead>
+								<tbody id="tbody">
+									{% for order in orders %}
+			
+									<tr>
+										<td>{{order.id}}</td>
+										<td>{{order.product_id}}</td>
 										<td>
 											<div class="row">
 											<img class=" update-cart mx-2" data-product="{{item.product.id}}" data-action="remove"  src="{% static  'images/minus.png' %}" height="20" width="20">
@@ -65,14 +76,25 @@
 											</div>
 										</td>
 										<td>{{order.price}}</td>
-				
-										<td><a class="btn btn-sm btn-danger" href="">Delete</a></td>
-				
+										<td>
+
+											<input type="button" data-sid="{{item.product.id}}" class="btn btn-del btn-danger btn-sm" value="Delete">
+										</td>
 									</tr>
-								{% endfor %}
-						
-				
+			
+									{% endfor %}
+								</tbody>
 							</table>
+
+
+
+
+
+
+
+
+
+
 						</div>
 					</div>
 
@@ -100,7 +122,7 @@
                 </div>
             </form>
 		
-		<div class="row my-2">
+		<div class="row my-2" id="pro">
 
 			{% for product in products %}
 			<div class="col-md-3 my-2">
@@ -111,7 +133,7 @@
 					<h6><strong>{{product.name}}</strong></h6>
 					<h6 >BD {{product.price}}</h6>
 	
-					<button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+					<button data-sid="{{product.id}}" id="btnaddtocart" class="btn btn-outline-secondary add-btn">Add to Cart</button>
 				
 					
 			        		

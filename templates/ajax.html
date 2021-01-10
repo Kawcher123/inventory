@@ -1,0 +1,41 @@
+<script>
+
+$("#pro").on("click",".add-btn",function(){
+        console.log("add cart button clicked");
+        output="";
+        let id=$(this).attr("data-sid");
+        console.log(id);
+        let csr=$("input[name=csrfmiddlewaretoken]").val();
+        //console.log(id);
+        mydata={sid:id,csrfmiddlewaretoken:csr};
+        mythis=this;
+
+        $.ajax({
+            url: "{% url 'create_order' %}",
+            method: "POST",
+            data: mydata,
+            success: function(data){
+                console.log(data);
+                sdata=data.order_data;
+                    if(data.status=="save"){
+                        //console.log(data.student_data)
+                        for (let i = 0; i < sdata.length; i++) {
+                            output+= "<tr><td>" + sdata[i].id + "</td><td>" + sdata[i].product_id + 
+                                "</td><td>" + sdata[i].quantity + "</td><td>" + sdata[i] + 
+                                    "</td><td> <input type='button' class='btn btn-delete btn-danger btn-sm' value='Delete' data-sid = " + sdata[i].id + " />"
+                            
+                        }
+                        $("#tbody").html(output);
+                        $("tbody").reset();
+                    }
+                    if (data.status==0) {
+                        console.log("unable to save form");
+                        
+                    }
+                
+            },
+        });
+
+    });
+
+</script>

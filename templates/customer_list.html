@@ -8,9 +8,9 @@
 
 <br>
 	<h1>CUSTOMERS</h1>
-<a class="btn btn-info  btn-sm mx-2" href="#">ADD CUSTOMER</a>
 
-<br>
+	<a class="btn btn-info  btn-sm mx-2" href="{% url 'add_customer' %}">ADD CUSTOMER</a>
+	<br>
 <br>
 <div class="row">
 	<div class="col-xl-4 col-md-6">
@@ -53,6 +53,7 @@
 
 
 <br>
+
 <div class="row">
 	<div class="col">
 		<div class="card card-body">
@@ -116,7 +117,7 @@
 								{% endif %}
 								</td>
                                 <td>{{ customer.date_created }}</td>
-                               	<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Update</a></td>
+                               	<td><a class="btn btn-sm btn-info" href="{% url 'edit_customer' customer.id %}">Update</a></td>
 								<td><a class="btn btn-sm btn-danger" href="{% url 'customer' customer.id %}">Delete</a></td>
                             </tr>
                             {% endfor %}

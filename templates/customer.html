@@ -10,7 +10,7 @@
 		<div class="card card-body h-100">
 			<h5>Customer: {{customer.name}}</h5>
 			<hr>
-			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'edit_customer' customer.id %}">Update Customer</a>
 			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Customer</a>
 
 		</div>
@@ -22,7 +22,7 @@
 			<hr>
 			<p>Email: {{customer.email}}</p>
 			<p>Phone: {{customer.phone}}</p>
-			<p>Delivery Address: {{customer.phone}}</p>
+			<p>Delivery Address: {{customer.address}}</p>
 		</div>
 	</div>
 
