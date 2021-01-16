@@ -1,5 +1,6 @@
 let carts=document.querySelectorAll('.add-btn');
 
+
 let products=[
     {
         name:'BBQ',
@@ -31,6 +32,7 @@ for (let i = 0; i < carts.length; i++) {
     })
     
 }
+
 
 function onLoadCartNumber(){
    
@@ -99,6 +101,88 @@ function totalcost(product){
     }
 }
 
+
+
+
+
+
+
+
+
+function cartNumberdecrease(product)
+{    
+    let productnumber=localStorage.getItem('cartNumber');
+    let cartcost=localStorage.getItem('totalcost');
+    productnumber=parseInt(productnumber);
+    if(productnumber){
+    
+    localStorage.setItem('cartNumber',productnumber-1);
+    document.querySelector('.item strong').textContent=productnumber-1;
+
+
+    }
+    else{
+
+    localStorage.setItem('cartNumber',1);
+    document.querySelector('.item strong').textContent=1;
+    }
+
+    setItemsdecrease(product);
+    
+}
+function setItemsdecrease(product){
+    let cartitems=localStorage.getItem('productsincart');
+    cartitems=JSON.parse(cartitems);
+    if(cartitems!=null){
+        if(cartitems[product.name]==undefined){
+            cartitems={
+                ...cartitems,
+                [product.name]:product
+            }
+        }
+        cartitems[product.name].incart-=1;
+    }
+    else{
+    product.incart=1;
+    cartitems={
+        [product.name]:product
+    }
+}
+    localStorage.setItem("productsincart", JSON.stringify(cartitems));
+    
+}
+function totalcostdecrease(product){
+    let cartcost=localStorage.getItem('totalcost');
+
+    if(cartcost!=null){
+        cartcost=parseInt(cartcost);
+        localStorage.setItem('totalcost',cartcost - product.price);
+        
+    }
+    else{
+        localStorage.setItem('totalcost',product.price);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function display()
 {
     let cartitems=localStorage.getItem('productsincart');
@@ -116,7 +200,27 @@ function display()
         productcontainer.innerHTML = '';
         Object.values(cartitems).map(item=>{
             productcontainer.innerHTML += '<tr><td>'+item.name +'</td><td>'+'<input type="button" class="btn btn-add btn-success btn-sm" value="+"></input>'+' '+item.incart+' '+'<input type="button" class="btn btn-minus btn-danger btn-sm" value="-"></input>'+'</td><td>'+(item.price)*(item.incart) +'</td><td>'+'<input type="button" class="btn btn-del btn-danger btn-sm" value="Delete"></input>' +'</td></tr>'
+           
         });
+        let qnt=document.querySelectorAll('.btn-add');
+        for (let i = 0; i < qnt.length; i++) {
+            qnt[i].addEventListener('click',()=>{
+                cartNumber(products[i]);
+                totalcost(products[i]);
+                window.location.reload();
+            })
+            
+        }
+
+        let qnt1=document.querySelectorAll('.btn-minus');
+        for (let i = 0; i < qnt1.length; i++) {
+            qnt1[i].addEventListener('click',()=>{
+                cartNumberdecrease(products[i]);
+                totalcostdecrease(products[i]);
+                window.location.reload();
+            })
+            
+        }
     } 
     
 }
