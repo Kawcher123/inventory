@@ -1,9 +1,11 @@
 from django.urls import path
 from . import views 
-from .views import AddCustomer,UpdateCustomer,AddProduct,UpdateProduct
+from .views import AddCustomer,UpdateCustomer,AddProduct,UpdateProduct,login_page,logout_page
 
 urlpatterns = [
     path('',views.home,name="home"),
+    path('login/', login_page, name='login'),
+    path('logout/', logout_page, name='logout'),
     path('add_product/',AddProduct.as_view(),name="add_product"),
     path('edit_product/edit/<str:pk>',UpdateProduct.as_view(),name="edit_product"),
     path('product',views.product,name="product"),

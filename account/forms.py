@@ -2,6 +2,18 @@ from django.forms import ModelForm
 from .models import Order,Customer,Product
 from django import forms
 
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Username',
+    }))
+    password = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Password',
+        'type': 'password'
+    }))
+
+
 class OrderForm(ModelForm):
 	class Meta:
 		model = Order

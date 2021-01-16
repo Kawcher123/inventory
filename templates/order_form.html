@@ -9,7 +9,6 @@
 
 			<form action="" method="POST">
 				{% csrf_token %}
-				{{form}}
 			
 
 			<div class="row">
@@ -20,8 +19,8 @@
 						<br>
 						<table class="table">
 							<tr>
-								<th><h5>Items: <strong>2</strong></h5></th>
-								<th><h5>Total:<strong> BD 2</strong></h5></th>
+								<th class="item"><h5>Items: <strong>0</strong></h5></th>
+								<th class="total"><h5>Total:<strong> 0</strong></h5></th>
 								<th>
 									<a  style="float:right; margin:5px;" class="btn btn-success" href="">Checkout</a>
 								</th>
@@ -46,7 +45,6 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th scope="col">ID</th>
 										<th scope="col">Name</th>
 										<th scope="col">Quantity</th>
 										<th scope="col">Price</th>
@@ -55,34 +53,9 @@
 			
 									</tr>
 								</thead>
-								<tbody id="tbody">
-									{% for order in orders %}
-			
-									<tr>
-										<td>{{order.id}}</td>
-										<td>{{order.product_id}}</td>
-										<td>
-											<div class="row">
-											<img class=" update-cart mx-2" data-product="{{item.product.id}}" data-action="remove"  src="{% static  'images/minus.png' %}" height="20" width="20">
-					
-		
-												
-											<p class="text-center">0</p>
-											
-		
-											<img class=" update-cart mx-2" data-product="{{item.product.id}}" data-action="add"  src="{% static  'images/add.png' %}" height="20" width="20">
-		
-												
-											</div>
-										</td>
-										<td>{{order.price}}</td>
-										<td>
-
-											<input type="button" data-sid="{{item.product.id}}" class="btn btn-del btn-danger btn-sm" value="Delete">
-										</td>
-									</tr>
-			
-									{% endfor %}
+								<tbody class="products" id="tbody">
+								
+								
 								</tbody>
 							</table>
 
@@ -153,10 +126,6 @@
 	</div>
 
 	</div>
-
-
-		
-	<input type="submit" name="Submit">
 
 
 

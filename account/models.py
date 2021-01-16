@@ -20,6 +20,7 @@ class Customer(models.Model):
 			('Active', 'Active'),
 			('Inactive', 'Inactive'),
 			)
+			
 
 	name = models.CharField(max_length=200, null=True)
 	phone = models.CharField(max_length=200, null=True)
